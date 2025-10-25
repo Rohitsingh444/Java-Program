@@ -5,6 +5,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringCalculator {
+
+    private int count = 0;
+
     public static void main(String [] args) {
         StringCalculator stringCalculator = new StringCalculator();
         System.out.println(stringCalculator.add(""));
@@ -16,9 +19,16 @@ public class StringCalculator {
         System.out.println(stringCalculator.add("//[***]\n1***2***3"));
         System.out.println(stringCalculator.add("//[*][%]\n1*2%3"));
         System.out.println(stringCalculator.add("//[**][%%]\n1**2%%3"));
+        System.out.println("Add() method is call "+stringCalculator.getCalledCount()+" times");
+
+    }
+
+    private int getCalledCount() {
+        return count;
     }
 
     private int add(String numbers) {
+        count++;
         List<Integer> negativeNum = new ArrayList<>();
         int sum = 0;
         if (numbers.isEmpty()) {
